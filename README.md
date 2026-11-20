@@ -1,5 +1,24 @@
 # Day 11 — Controlled Agent Security (2026)
 
+## Thông tin bài nộp
+
+- Họ tên: Ngo Van Tuan
+- MSSV: 2A202603630
+- Kết quả chạy và tự kiểm: [`outputs/lab_report.md`](outputs/lab_report.md) (do grader tự sinh).
+
+Chạy từ gốc repo trên PowerShell, sau khi cài dependencies và điền key trong `.env` local:
+
+```powershell
+.\.venv\Scripts\python.exe src/main.py --part 2
+.\.venv\Scripts\python.exe src/main.py --part 3
+.\.venv\Scripts\python.exe src/main.py --part 4
+.\.venv\Scripts\python.exe -m pytest tests/smoke tests/public tests/test_cp2_guardrails.py tests/test_cp3_pipeline.py tests/test_cp4_attacks.py -q
+.\.venv\Scripts\python.exe scripts/grade.py --submission-dir . --out outputs/grade_report.json
+```
+
+CP3 và CP4 gọi API thật. CP4 chỉ có bằng chứng leak khi phản hồi chứa secret demo;
+các lượt `error` hoặc `nemo_error` là lỗi thực thi cần xử lý trước khi đánh giá kết quả.
+
 > 👤 **Hình thức:** bài tập **cá nhân** (1 người / 1 MSSV).  
 > 🎯 **Mục tiêu:** đóng vai **Blue Team** để học cách xây Guardrails phòng thủ, rồi đóng vai **Red Team** để tấn công agent **Red** hoặc **Red Advance**.  
 > ✅ Làm theo **Checkpoint 1 → 5** trong [`CHECKPOINTS.md`](CHECKPOINTS.md) · nộp theo [`SUBMISSION.md`](SUBMISSION.md).
